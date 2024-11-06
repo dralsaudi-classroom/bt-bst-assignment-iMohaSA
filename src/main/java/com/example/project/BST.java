@@ -155,13 +155,15 @@ public class BST<T> {
 	}
 
 
-		public int countNodesIn(int k) {
+	public int countNodesIn(int k) {
 	    BSTNode<T> subtreeRoot = findNode(root, k);
 	    if (subtreeRoot == null) {
 	        return 0;
 	    }
-	    return countNodes(subtreeRoot);
+	    int count = countNodes(subtreeRoot);
+	    return count;
 	}
+
 	
 	private BSTNode<T> findNode(BSTNode<T> node, int k) {
 	    if (node == null) {
