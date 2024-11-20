@@ -110,6 +110,5 @@ private int countLeaves(BTNode<T> node) {
         return 1;
     }
     return countLeaves(node.left) + countLeaves(node.right);
-}
-
+ }
 }
