@@ -1,8 +1,8 @@
 package com.example.project;
 
 public class DLL<T> {
-	private DLLNode<T> head;
-	private DLLNode<T> current;
+    private DLLNode<T> head;
+    private DLLNode<T> current;
 
     public DLL() {
         head = current = null;
@@ -52,50 +52,41 @@ public class DLL<T> {
         if(current == head) {
             head = head.next;
             if(head != null)
-               head.previous = null;
+                head.previous = null;
         }
         else {
             current.previous.next = current.next;
             if(current.next != null)
-               current.next.previous = current.previous;
+                current.next.previous = current.previous;
         }
         if(current.next == null)
             current = head;
         else
             current = current.next;
     }
- public void removeBetween(T e1, T e2) {
-    DLLNode<T> start = head;
-    DLLNode<T> end = head;
-
-    while (start != null && !start.data.equals(e1)) {
-        start = start.next;
-    }
-
-    if (start == null || start.next == null) {
-        return;
-    }
-
-    end = start.next;
-    while (end != null && !end.data.equals(e2)) {
-        end = end.next;
-    }
-
-    if (end == null || start.next == end) {
-        return;
-    }
-
-    DLLNode<T> tmp = start.next;
-    while (tmp != end) {
-        DLLNode<T> nextNode = tmp.next;
-        tmp.previous.next = tmp.next;
-        if (tmp.next != null) {
-            tmp.next.previous = tmp.previous;
+    public void removeBetween(T e1, T e2) {
+        DLLNode<T> start = head;
+        while (start != null && !start.data.equals(e1)) {
+            start = start.next;
         }
-        tmp = nextNode;
-    }
 
-    current = head;
-}
+        if (start == null || start.next == null) {
+            return;
+        }
+
+        DLLNode<T> end = start.next;
+        while (end != null && !end.data.equals(e2)) {
+            end = end.next;
+        }
+
+        if (end == null) {
+            return;
+        }
+
+        start.next = end;
+        end.previous = start;
+
+        current = start;
+    }
 
 }
