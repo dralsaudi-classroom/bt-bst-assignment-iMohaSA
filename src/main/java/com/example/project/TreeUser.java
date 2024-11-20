@@ -2,14 +2,16 @@ package com.example.project;
 
 public class TreeUser {
     public static <T> int countLeaves(BT<T> bt) {
-        return countLeavesHelper(bt.getRoot());
+        bt.find(Relative.Root);
+
+        return countLeavesHelper(bt.root);
     }
 
-    private static <T> int countLeavesHelper(Node<T> node) {
+    private static <T> int countLeavesHelper(BTNode<T> node) {
         if (node == null) {
             return 0;
         }
-        if (node.isLeaf()) {
+        if (node.left == null && node.right == null) {
             return 1;
         }
         return countLeavesHelper(node.left) + countLeavesHelper(node.right);
