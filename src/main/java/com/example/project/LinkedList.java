@@ -74,7 +74,7 @@ public class LinkedList<T> implements List<T>{
             inner = inner.next;
         }
 
-        if (frequency > maxFrequency) {
+        if (frequency >= maxFrequency) {
             maxFrequency = frequency;
             mostFrequent = outer.data;
         }
